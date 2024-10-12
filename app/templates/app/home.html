@@ -1,0 +1,23 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<body>
+    <div class="container">
+        <div class="left-container">
+            <h1 class="slide-in">Hello, <br>I'm Henry!</h1>
+        </div>
+        <div class="right-container">
+            <img src="/static/images/Hentor.png" alt="Henry's Photo">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const slidingText = document.querySelector('.slide-in');    
+            setTimeout(() => {
+                slidingText.classList.add('visible'); 
+            }, 500); 
+        });
+    </script>
+</body>
+{% endblock content %}

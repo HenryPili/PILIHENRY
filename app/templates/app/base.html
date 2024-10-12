@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moon</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="shortcut icon" href="{% static 'images/favicon (1).ico' %}" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Afacad Flux' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navcontainer1">
+                <img src="{% static 'images/glitch.png' %}" alt="">
+                <h1>HENRY PILI</h1>
+            </div>
+
+            <div class="navcontainer2">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/Projects/">Projects</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    
+    {% block content %}
+    <!--pages-->
+    {% endblock content %}
+    
+</body>
+</html>

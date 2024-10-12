@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+body {
+    background-color: #FBE9D0; 
+    color: #fff; 
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    padding: 0;
+}
+
+.containers {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    flex-wrap: wrap; 
+    padding: 20px;
+}
+
+.firstimage {
+    flex: 1.2; 
+    width: 30%;
+    padding-left: 20px;
+    display: flex;
+    justify-content: center; 
+    padding-right: 20px;
+}
+
+.firstimage img {
+    border-radius: 50%;
+    border: 3px solid #244855; 
+    max-width: 100%; 
+    height: auto;
+    transition: transform 0.3s ease; 
+}
+.firstimage img:hover{
+    transform: scale(1.05);
+}
+
+.textcontainers {
+    flex: 2; 
+    padding: 20px;
+    font-family: 'Playfair Display', serif;
+    width: 60%;
+}
+
+.textcontainers h1 {
+    font-size: 2.5rem; 
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: #244855; 
+}
+
+.textcontainers p, .details p {
+    font-size: 1.2rem;
+    color: #874841; 
+    line-height: 1.8; 
+}
+
+.details {
+    margin-top: 20px;
+}
+
+.linkedin {
+    margin-top: 30px; 
+    display: inline-block;
+    background-color: #000;
+    color: #ffffff;
+    padding: 12px 25px; 
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .containers {
+        flex-direction: column; 
+        padding: 10px;
+    }
+
+    .firstimage {
+        width: 50%; 
+        padding: 0;
+        margin-bottom: 20px; 
+    }
+
+    .textcontainers {
+        width: 100%;
+        padding: 0;
+        text-align: center; 
+    }
+
+    .textcontainers h1 {
+        font-size: 2rem; 
+    }
+
+    .textcontainers p, .details p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .containers {
+        padding: 10px;
+    }
+
+    .firstimage {
+        width: 70%; 
+        margin: 0 auto 15px; 
+    }
+
+    .textcontainers {
+        width: 100%;
+        padding: 0 10px;
+        text-align: center;
+    }
+
+    .textcontainers h1 {
+        font-size: 1.8rem; 
+    }
+
+    .textcontainers p, .details p {
+        font-size: 0.9rem;
+        line-height: 1.5; 
+    }
+
+    .linkedin {
+        padding: 10px 20px; 
+    }
+}

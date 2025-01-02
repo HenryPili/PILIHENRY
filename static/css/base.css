@@ -50,7 +50,7 @@ body {
     align-items: center;
     justify-content: flex-start;
     font-family: 'Montserrat', serif;
-    
+
 }
 
 .navcontainer1 img {
@@ -69,7 +69,7 @@ body {
 
 .navcontainer2 {
     display: flex;
-    
+
 }
 
 .navcontainer2 ul {
@@ -78,8 +78,8 @@ body {
     padding: 0;
     display: flex;
     font-size: 20px;
-    
-    
+
+
 }
 
 .navcontainer2 li {
@@ -106,7 +106,7 @@ body {
     display: flex;
     flex-direction: column;
     padding-left: 10%;
-    opacity: 0; 
+    opacity: 0;
     transform: translateY(20px);
     transition: opacity 1s ease, transform 1s ease;
 }
@@ -135,8 +135,8 @@ body {
     justify-content: center;
     width: 50%;
     padding: 20px;
-    
-    
+
+
 }
 
 .right-container {
@@ -149,7 +149,7 @@ body {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
-    
+
 }
 .left-container h1{
     font-size: 150px;
@@ -157,13 +157,13 @@ body {
     font-family: 'Mondrake';
     color: #244855;
     letter-spacing: 8px;
-    
-    
+
+
 }
 .left-container p{
     font-size: 25px;
     font-family: 'Montserrat', serif;
-    
+
 }
 
 
@@ -271,30 +271,32 @@ body {
 }
 
 .slide-in {
-    transform: translateX(-100%); 
-    opacity: 0; 
-    transition: transform 1s ease-in-out, opacity 1s ease-in-out; 
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
 }
 
 .visible {
-    opacity: 1; 
-    animation: slideBounce 1s forwards; 
+    opacity: 1;
+    animation: slideBounce 1s forwards;
 }
 
 @keyframes slideBounce {
     0% {
-        transform: translateX(-100%); 
+        transform: translateX(-100%);
     }
     50% {
-        transform: translateX(30px); 
+        transform: translateX(30px);
     }
     70% {
-        transform: translateX(-10px); 
+        transform: translateX(-10px);
     }
     100% {
-        transform: translateX(0); 
+        transform: translateX(0);
     }
 }
+
+
 
 
 

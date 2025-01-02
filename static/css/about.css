@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 
 body {
-    background-color: #FBE9D0; 
+    background-color: #FBE9D0;
     color: #fff; 
     font-family: 'Playfair Display', serif;
     margin: 0;
@@ -45,6 +45,7 @@ body {
     padding: 20px;
     font-family: 'Playfair Display', serif;
     width: 60%;
+
 }
 
 .textcontainers h1 {

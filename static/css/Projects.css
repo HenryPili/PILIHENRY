@@ -2,52 +2,52 @@
 
 .container {
     display: flex;
-    justify-content: space-between; 
-    flex-wrap: wrap; 
+    justify-content: space-between;
+    flex-wrap: wrap;
     padding: 20px;
-    margin: 0 auto; 
+    margin: 0 auto;
     max-width: 1200px;
 }
 
 .image-wrapper {
-    flex: 1; 
+    flex: 1;
     display: flex;
-    justify-content: center; 
-    padding: 10px; 
+    justify-content: center;
+    padding: 10px;
 }
 
 .image-wrapper img {
-    width: 150%; 
-    height: auto; 
-    max-width: 500px; 
-    border-radius: 8px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    transition: transform 0.3s ease; 
+    width: 150%;
+    height: auto;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
 .image-wrapper img:hover {
-    transform: scale(1.05); 
+    transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
     .container {
-        flex-direction: column; 
+        flex-direction: column;
         align-items: center;
     }
-    
+
     .image-wrapper {
-        flex-basis: 100%; 
-        padding: 10px 0; 
+        flex-basis: 100%;
+        padding: 10px 0;
     }
 }
 
 @media (max-width: 480px) {
     .container {
-        padding: 10px; 
+        padding: 10px;
     }
 
     .image-wrapper {
-        padding: 5px; 
+        padding: 5px;
     }
 
     .image-wrapper img {

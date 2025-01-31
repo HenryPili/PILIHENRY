@@ -12,27 +12,38 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 </head>
 <body>
+
+    {% if request.path != '/signup/' %}  {# Hide navbar if on signup page #}
     <header>
         <nav class="navbar">
             <div class="navcontainer1">
                 <img src="{% static 'images/glitch.png' %}" alt="">
-                
             </div>
 
             <div class="navcontainer2">
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="/about/">About</a></li>
-                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="/GarbageSchedule/">GarbageSchedule</a></li>
+                    <a href="{% url 'login' %}">Log-in</a>
+                    <a href="{% url 'signup' %}">Sign-up</a>
                 </ul>
             </div>
         </nav>
     </header>
 
-    
+    {% if user.is_authenticated %}
+    <p>Hi {{ user.username }}</p>
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Log-out</button>
+    </form>
+    {% endif %}
+    {% endif %}
+
     {% block content %}
-    <!--pages-->
+    <!-- Pages -->
     {% endblock content %}
-    
+
 </body>
 </html>

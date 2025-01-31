@@ -1,0 +1,13 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="posts-entry">
+        <h2><a href="">{{ object.title }}</a></h2>
+        <p>{{ object.body }}</p>
+    </div>
+    
+    <a href="{% url 'GarbageSchedule_update' object.pk %}">+ Edit GarbageSchedule</a>
+    <a href="{% url 'GarbageSchedule_delete' object.pk %}">- Delete GarbageSchedule</a>
+
+{% endblock content %}

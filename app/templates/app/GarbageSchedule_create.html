@@ -1,0 +1,130 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+    <form action="" method="post" autocomplete="off" style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); max-width: 900px; margin: auto;">
+        {% csrf_token %}
+
+        <!-- Display errors if there are any -->
+        {% if form.errors %}
+            <div style="color: red; margin-bottom: 20px;">
+                <ul>
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <!-- Form Fields -->
+        <p style="margin-bottom: 20px;">
+            <label for="id_location" style="font-weight: bold; color: #4CAF50;">Location:</label>
+            {{ form.location }}
+        </p>
+
+        <p style="margin-bottom: 20px;">
+            <label for="id_collection_date" style="font-weight: bold; color: #4CAF50;">Collection Date:</label>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <input type="text" name="collection_date" id="datepicker" required autocomplete="off" placeholder="YYYY-MM-DD" style="padding: 12px; border-radius: 5px; width: 100%; border: 1px solid #ddd;">
+                <span id="calendar-icon" style="cursor: pointer; font-size: 24px; color: #4CAF50;">📅</span>
+            </div>
+        </p>
+
+        <p style="margin-bottom: 20px;">
+            <label for="id_time_slot" style="font-weight: bold; color: #4CAF50;">Time Slot:</label>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <input type="text" name="time_slot" id="timepicker" required autocomplete="off" placeholder="HH:MM AM/PM" style="padding: 12px; border-radius: 5px; width: 100%; border: 1px solid #ddd;">
+                <span id="clock-icon" style="cursor: pointer; font-size: 24px; color: #4CAF50;">⏰</span>
+            </div>
+        </p>
+
+        <p style="margin-bottom: 20px;">
+            <label for="id_garbage_type" style="font-weight: bold; color: #4CAF50;">Garbage Type:</label>
+            <select name="garbage_type" id="id_garbage_type" required style="padding: 12px; width: 100%; border-radius: 5px; border: 1px solid #ddd;">
+                <option value="reduce">Reduce</option>
+                <option value="reuse">Reuse</option>
+                <option value="recycle">Recycle</option>
+            </select>
+        </p>
+
+        <p style="margin-bottom: 20px;">
+            <label for="id_status" style="font-weight: bold; color: #4CAF50;">Status:</label>
+            <select name="status" id="id_status" required style="padding: 12px; width: 100%; border-radius: 5px; border: 1px solid #ddd;">
+                <option value="pending" selected>Pending</option>
+                <option value="completed">Completed</option>
+                <option value="missed">Missed</option>
+            </select>
+        </p>
+
+        <button type="submit" style="background-color: #28a745; color: white; padding: 15px 20px; border: none; border-radius: 5px; width: 100%; cursor: pointer; font-size: 16px; margin-top: 20px;">
+            Save Schedule
+        </button>
+
+    </form>
+
+    <!-- Back to Schedule List Link -->
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="{% url 'GarbageSchedule' %}" style="text-decoration: none; color: #007bff; font-size: 16px; font-weight: bold; transition: color 0.3s ease;">
+            &larr; Back to Schedule List
+        </a>
+    </div>
+
+    <!-- Hover Effect CSS -->
+    <style>
+        a:hover {
+            color: #28a745; /* Green color on hover */
+        }
+
+        /* Remove scroll on body */
+        body {
+            overflow-x: hidden;  /* Disable horizontal scroll */
+            overflow-y: auto;    /* Enable vertical scrolling */
+        }
+    </style>
+
+    <!-- jQuery UI for Datepicker -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- jQuery Timepicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.css">
+
+    <script>
+        $(function() {
+            // Date Picker
+            $("#datepicker").datepicker({
+                dateFormat: "yy-mm-dd",
+                changeMonth: true,
+                changeYear: true,
+                minDate: 0 // Prevent past dates
+            });
+
+            // Clicking the calendar icon opens the date picker
+            $("#calendar-icon").click(function() {
+                $("#datepicker").datepicker("show");
+            });
+
+            // Time Picker
+            $("#timepicker").timepicker({
+                timeFormat: 'h:i A', // Example: 10:30 AM
+                interval: 30, // 30-minute intervals
+                minTime: '6:00 AM', // Earliest time
+                maxTime: '8:00 PM', // Latest time
+                startTime: '6:00 AM', // Default start time
+                dynamic: false,
+                dropdown: true,
+                scrollbar: true
+            });
+
+            // Clicking the clock icon opens the time picker
+            $("#clock-icon").click(function() {
+                $("#timepicker").focus();
+            });
+        });
+    </script>
+
+{% endblock content %}

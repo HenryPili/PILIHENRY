@@ -1,0 +1,116 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- Add Schedule Button -->
+    <a href="{% url 'GarbageSchedule_create' %}" class="btn btn-success schedule-btn" style="margin-bottom: 20px; padding: 10px 15px; text-decoration: none; border-radius: 5px;">
+        + Schedule Collection
+    </a>
+
+    <!-- Search Form -->
+    <form method="get" action="{% url 'GarbageSchedule' %}" style="margin-bottom: 20px;">
+        <input type="text" name="q" placeholder="Search schedules by location..." value="{{ search_query }}" 
+               style="padding: 10px; width: 250px; border: 1px solid #ddd; border-radius: 5px;">
+        <button type="submit" class="btn btn-primary" style="padding: 10px 20px; border: none; border-radius: 5px;">
+            Search
+        </button>
+    </form>
+
+    <!-- Table -->
+    <table class="table table-striped" style="width: 100%; border-collapse: collapse;">
+        <thead>
+            <tr style="background-color: #4CAF50; color: white;">
+                <th style="padding: 12px; text-align: left;">Location</th>
+                <th style="padding: 12px; text-align: left;">Collection Date</th>
+                <th style="padding: 12px; text-align: left;">Time Slot</th>
+                <th style="padding: 12px; text-align: left;">Garbage Types</th>
+                <th style="padding: 12px; text-align: left;">Status</th>
+                <th style="padding: 12px; text-align: left;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for schedule in garbage_schedules %}
+                <tr style="background-color: {% cycle '#ffffff' '#f9f9f9' %};">
+                    <td style="padding: 10px;">{{ schedule.location.address }}</td>
+                    <td style="padding: 10px;">{{ schedule.collection_date }}</td>
+                    <td style="padding: 10px;">{{ schedule.time_slot }}</td>
+                    <td style="padding: 10px;">
+                        {% for garbage_type in schedule.garbage_type.all %}
+                            {{ garbage_type.name }}<br>
+                        {% endfor %}
+                    </td>
+                    <td style="padding: 10px;">
+                        {% if schedule.status == "pending" %}
+                            <span style="color: orange;">Pending</span>
+                        {% elif schedule.status == "completed" %}
+                            <span style="color: green;">Completed</span>
+                        {% else %}
+                            <span style="color: red;">Missed</span>
+                        {% endif %}
+                    </td>
+                    <td style="padding: 10px;">
+                        <a href="{% url 'GarbageSchedule_detail' schedule.pk %}" class="btn btn-info btn-sm action-btn" style="text-decoration: none; margin-right: 5px;">View</a>
+                        <a href="{% url 'GarbageSchedule_update' schedule.pk %}" class="btn btn-warning btn-sm action-btn" style="text-decoration: none; margin-right: 5px;">Edit</a>
+                        <a href="{% url 'GarbageSchedule_delete' schedule.pk %}" class="btn btn-danger btn-sm action-btn" style="text-decoration: none;">Delete</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6" style="text-align: center; padding: 10px;">No schedules found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr style="background-color: #f9f9f9; font-weight: bold; text-align: center;">
+                <td style="padding: 12px;">Total Schedules: <strong>{{ total_displayed_schedules }}</strong></td>
+                <td style="padding: 12px;">Total Collection Dates: <strong>{{ total_displayed_collection_dates }}</strong></td>
+                <td style="padding: 12px;">Total Time Slots: <strong>{{ total_displayed_time_slots }}</strong></td>
+                <td style="padding: 12px;">Total Garbage Types: <strong>{{ total_displayed_garbage_types }}</strong></td>
+                <td colspan="2" style="padding: 12px;"></td> <!-- Empty cells for consistency -->
+            </tr>
+        </tfoot>
+    </table>
+
+    <!-- Additional Styling for Buttons -->
+    <style>
+        /* Prevents overflow on the page */
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-y: auto;   /* Allow vertical scroll only if necessary */
+        }
+
+        /* Optional: Prevent scroll on the body */
+        body {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Button Hover Effects */
+        .schedule-btn {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .schedule-btn:hover {
+            background-color: #218838;
+            box-shadow: none;  /* Ensure no box-shadow is added on hover */
+        }
+
+        .action-btn:hover {
+            opacity: 0.8;
+        }
+        .action-btn.btn-info:hover {
+            background-color: #5bc0de;
+        }
+        .action-btn.btn-warning:hover {
+            background-color: #e6a400;
+        }
+        .action-btn.btn-danger:hover {
+            background-color: #c82333;
+        }
+    </style>
+
+{% endblock content %}

@@ -1,15 +1,14 @@
 from django.urls import path
-from .views import (HomePageView, AboutPageView, ProjectsPageView, BlogListView,
-                    BlogDetailView, BlogCreateView, BlogUpdateView, BlogDeleteView)
-
+from .views import (HomePageView, AboutPageView, ProjectsPageView, GarbageScheduleListView,
+                    GarbageScheduleDetailView, GarbageScheduleCreateView, GarbageScheduleUpdateView, GarbageScheduleDeleteView)
 
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
     path('about/', AboutPageView.as_view(), name='about'),
     path('Projects/', ProjectsPageView.as_view(), name='Projects'),
-    path('blog/', BlogListView.as_view(), name='blog'),
-    path('blog/<int:pk>', BlogDetailView.as_view(), name='blog_detail'),
-    path('blog/create', BlogCreateView.as_view(), name='blog_create'),
-    path('blog/<int:pk>/edit', BlogUpdateView.as_view(), name='blog_update'),
-    path('blog/<int:pk>/delete', BlogDeleteView.as_view(), name='blog_delete'),
+    path('GarbageSchedule/', GarbageScheduleListView.as_view(), name='GarbageSchedule'),  # Correct endpoint for list view
+    path('GarbageSchedule/<int:pk>/', GarbageScheduleDetailView.as_view(), name='GarbageSchedule_detail'),  # Added trailing slash for consistency
+    path('GarbageSchedule/create/', GarbageScheduleCreateView.as_view(), name='GarbageSchedule_create'),  # Added trailing slash
+    path('GarbageSchedule/<int:pk>/edit/', GarbageScheduleUpdateView.as_view(), name='GarbageSchedule_update'),  # Added trailing slash
+    path('GarbageSchedule/<int:pk>/delete/', GarbageScheduleDeleteView.as_view(), name='GarbageSchedule_delete'),  # Added trailing slash
 ]

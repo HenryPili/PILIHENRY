@@ -1,0 +1,126 @@
+
+{% load static %}
+
+{% block content %}
+<style>
+    /* Ensure navbar stays at the top */
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: white;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 10px 0;
+        z-index: 1000;
+    }
+
+    /* Body styling to push content down */
+    body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: #f8f9fa;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        padding-top: 80px; /* Space for fixed navbar */
+    }
+
+    /* Sign-up form container */
+    .signup-container {
+        background: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        width: 350px;
+        text-align: center;
+    }
+
+    h2 {
+        color: #4CAF50;
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        text-align: left;
+        font-weight: 600;
+        margin-top: 10px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    button {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    /* Ensure navbar items stay at the top */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 50px;
+    }
+
+    .navbar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+    }
+
+    .navbar ul li {
+        margin: 0 15px;
+    }
+
+    .navbar ul li a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+    }
+</style>
+
+<div class="signup-container">
+    <h2>Register</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        <label for="username">Username</label>
+        <input type="text" placeholder="Enter your username" name="username" required>
+
+        <label for="age">Age</label>
+        <input type="text" placeholder="Enter your Age" name="age" required>
+
+        <label for="phone_number">Phone Number</label>
+        <input type="text" placeholder="Enter your phone number" name="phone_number" required>
+
+        <label for="password1">Password</label>
+        <input type="password" placeholder="Enter your password" name="password1" required>
+
+        <label for="password2">Confirm Password</label>
+        <input type="password" placeholder="Re-enter your password" name="password2" required>
+
+        <button type="submit">Register</button>
+    </form>
+</div>
+{% endblock content %}
